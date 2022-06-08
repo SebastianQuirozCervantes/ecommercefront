@@ -1,0 +1,26 @@
+.navbar-collapse {
+    justify-content: right;
+}
+
+.navbar-brand {
+    font-family: 'Abril Fatface', cursive;
+    color: white !important;
+}
+
+.bg-color {
+  background: linear-gradient(to bottom left, #000000 40%, #9c0101 100%);
+}
+
+
+footer {
+	align-content: flex-end;
+    
+  background: linear-gradient(to bottom left, #000000 40%, #9c0101 100%);
+}
+
+.footer {
+    font-family: 'Abril Fatface', cursive;
+    color: white !important;
+    text-align: center;
+    padding: 25px;
+}
