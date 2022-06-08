@@ -1,4 +1,8 @@
-const API_URL = "http://localhost:3001/api";
+let API_URL = "https://infinite-earth-38624.herokuapp.com/production";
+if(!process.env.NODE_ENV){
+    API_URL = 'http://localhost:3001/api'
+}
+console.log(ProcessingInstruction)
 let TEXT = '';
 let PRODUCTS = [];
 async function fillProducts(params) {
