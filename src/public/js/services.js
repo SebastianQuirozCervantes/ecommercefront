@@ -1,8 +1,11 @@
+// URL OF API
 let API_URL = "https://infinite-earth-38624.herokuapp.com/production";
 //API_URL = 'http://localhost:3001/api'
 
 let TEXT = '';
 let PRODUCTS = [];
+
+// Add the products in the html
 async function fillProducts(params) {
     const products = await getProducts(params);
     let cardsProducts = document.getElementById('cards-products');
@@ -49,6 +52,7 @@ function fill(text,page){
     fillCategories(params);
 }
 
+// Add products to 'CART'
 function addCart(id,name, price, discount){
     const quantityCart = document.getElementById('quantity_cart_products');
     let exist = 0;
@@ -63,6 +67,7 @@ function addCart(id,name, price, discount){
     quantityCart.innerHTML = `${PRODUCTS.length}`;
 }
 
+// Remove product to 'CART'
 function removeCart(id){
     const quantityCart = document.getElementById('quantity_cart_products');
     PRODUCTS.forEach((product, index) => {
@@ -76,6 +81,7 @@ function removeCart(id){
     quantityCart.innerHTML = `${PRODUCTS.length}`;
 }
 
+// Add products to html modal
 function fillCart(){
     if(PRODUCTS.length > 0){
         const cart_body = document.getElementById('cart_body');
@@ -121,6 +127,7 @@ function changeCategory(category){
     fillProducts(params)
 }
 
+// Call the service to get products
 async function getProducts (params){
     const description= params?.description || '';
     const page= params?.page || 1;
@@ -136,6 +143,7 @@ async function getProducts (params){
     return await res.json();
 }
 
+// Call the service to get categories with quantity of products
 async function getCategoriesWithProducts (params){
     const description = params?.description || '';
     const res = await fetch(`${API_URL}/categories?description=${description}`, {
@@ -149,6 +157,8 @@ async function getCategoriesWithProducts (params){
     return await res.json();
 }
 
+
+// Add the categories in the html
 async function fillCategories(params){
     const categories = await getCategoriesWithProducts(params);
     const selectCategories = document.getElementById('select-category');
@@ -159,9 +169,11 @@ async function fillCategories(params){
     })
 }
 
+// Remove all products for 'Cart'
 function finish(){
     if(PRODUCTS.length == 0){
         alert('No hay nada en su carrito');
+        // Hide modal
         $("#exampleModal").modal("hide");
     }else{
         alert('Compra finalizada satisfactoriamente');
